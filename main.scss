@@ -1,0 +1,118 @@
+/* SCSS시작 */
+
+$font_blue: royalblue;
+h1{
+  color:$font_blue;
+  /* background-color: orange; */  // 주석방법1. /*   */ 기본 CSS주석: SCSS -> CSS 변환 후, 주석 표시 보임
+  // background-color: orange;  <--- 주석방법2.  // 주석슬래쉬 2번: SCSS -> CSS로 변환 후, 주석표시 안 보임.
+  font-size:30px;
+}
+
+li{list-style:none;}
+.container{
+  > ul{
+    li{
+      font-size:20px;
+      .name {color:royalblue}
+      .age {color:orange}
+    }
+  }
+  
+}
+
+
+/* & 상위 선택자 참조 */ 
+//////////// --> "치환"기능
+//////////// 띄어쓰기 있냐없냐로 자식이 될 수도, 동일요소일수도 있는거다.
+
+.btn {
+  position: absolute;
+  &.active{
+    color:Red;
+  }
+}
+
+
+.list {
+  div{
+    &:last-child {
+      margin-right:0;
+      text-decoration: underline;
+    }
+  }
+}
+
+.fs{
+  &-small{ font-size: 12px; }
+  &-medium{ font-size: 14px; }
+  &-large{ font-size: 16px; }
+}
+
+
+
+/* 중첩된 속성 */
+
+// font- 처럼 같은 네임스페이스를 가진 것에 대해서, 중첩속성을 사용할 수 있다.
+.box {
+  font: {
+    weight:bold;
+    size:10px;
+    family: sans-serif;
+  };
+  margin: {
+    top: 10px;
+    left: 20px;
+  };
+  padding: {
+    top:20px;
+    bottom:40px;
+  }
+}
+
+
+
+
+/* 변수 (Variables) */
+/* 선언방법: 달러기호$ + 변수명 :(콜론) 
+1. 변수 유효범위가 있다.
+2. 전역변수, 지역변수처럼!!
+3. javscript의 let 키워드처럼, 재할당 가능하다
+*/
+
+$size__global: 120px; 
+
+
+.container {
+  position:fixed;
+  top:$size__global;
+  /* left:$size__local  얘는 지역변수라서,변수 참조범위를 벗어났을 경우 에러발생*/;
+  .item {
+    $size__global: 70px; 
+    $size__local: 20px; 
+    width: $size__local;
+    height:$size__local;
+    transform: translateX($size__local);
+    h3{
+      font-size: $size__global;
+    }
+  }
+}
+
+
+
+
+/* 산술연산 */
+
+div {
+  $size: 30px;
+  width: 20px + 20px;
+  height: 30px - 10px;
+  font-size: 10px * 2;
+  /* margin: 30px / 2;  CSS에서 슬래시는 속성을 구분짓는 기호로 사용된다. 따라서 연산에서 슬래시를 썼을 경우, 의도한 나누기 연산이 실행되지 않는다. 그것을 대처하기 위한 방법 */
+  margin: ( 30px / 2 ); /* 1.중괄호로 묶는다. */
+  margin: $size / 2; /* 2. 변수에 할당할 경우, 나누기 연산된다. */
+  margin: 4 + 10px / 2 ; /* 3. 다른 연산자를 추가로 사용할 경우 */
+  padding: 20px % 7;
+  width: calc(100% - 200px);
+
+}
