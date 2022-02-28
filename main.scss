@@ -1,5 +1,9 @@
 /* SCSS시작 */
 
+@import url('./import.scss'); // CSS 방식
+// @import './import.scss', 'mixin.scss'; // SCSS 방식
+@import './import', './mixin'; // scss 확장자 생략 가능
+
 $font_blue: royalblue;
 h1{
   color:$font_blue;
@@ -103,16 +107,18 @@ $size__global: 120px;
 
 /* 산술연산 */
 
-div {
-  $size: 30px;
-  width: 20px + 20px;
-  height: 30px - 10px;
-  font-size: 10px * 2;
-  /* margin: 30px / 2;  CSS에서 슬래시는 속성을 구분짓는 기호로 사용된다. 따라서 연산에서 슬래시를 썼을 경우, 의도한 나누기 연산이 실행되지 않는다. 그것을 대처하기 위한 방법 */
-  margin: ( 30px / 2 ); /* 1.중괄호로 묶는다. */
-  margin: $size / 2; /* 2. 변수에 할당할 경우, 나누기 연산된다. */
-  margin: 4 + 10px / 2 ; /* 3. 다른 연산자를 추가로 사용할 경우 */
-  padding: 20px % 7;
-  width: calc(100% - 200px);
+// div {
+//   $size: 30px;
+//   width: 20px + 20px;
+//   // height: 30px - 10px;
+//   font-size: 10px * 2;
+//   /* margin: 30px / 2;  CSS에서 슬래시는 속성을 구분짓는 기호로 사용된다. 따라서 연산에서 슬래시를 썼을 경우, 의도한 나누기 연산이 실행되지 않는다. 그것을 대처하기 위한 방법 */
+//   margin: ( 30px / 2 ); /* 1.중괄호로 묶는다. */
+//   margin: $size / 2; /* 2. 변수에 할당할 경우, 나누기 연산된다. */
+//   margin: (4 + 10px / 2) ; /* 3. 다른 연산자를 추가로 사용할 경우 */
+//   padding: 20px % 7;
+//   width: calc(100% - 200px);
 
-}
+// }
+
+
