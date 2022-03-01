@@ -1,0 +1,24 @@
+/* Built-in-fnction: SCSS에 기본으로 내장된 함수  */
+
+.box {
+  $color: royalblue;
+  width:200px;
+  height:100px;
+  margin:20px;
+  border-radius:10px;
+  background-color:$color;
+  &:hover{ // mouse hover효과
+    background-color:darken($color, 10%);
+  }
+  &.built-in{
+      
+    // background-color: $color;
+    // background-color: mix($color, red); // mix(colorA, colorB) -> A,B색상을 섞음
+    // background-color: lighten($color, 10%); // 특정색상을 밝게
+    // background-color: darken($color, 10%); // 특정색상을 어둡게
+    // background-color: saturate($color, 40%); // 채도 증가
+    // background-color: desaturate($color, 40%); // 채도 감소
+    background-color: grayscale($color); // 그레이스케일로 변환
+    // background-color: rgba($color, 0.3); // rgba 알파값 추가 (color, 투명도)
+  }
+}

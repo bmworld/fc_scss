@@ -1,0 +1,6 @@
+@for $i from 1 through 10 {
+  .box:nth-child(#{$i}) {
+     /* SCSS의 보간: JS에서 ${___} <--의 개념과 동일 */
+    width: 100px * $i;
+  }
+}

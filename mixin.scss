@@ -1,0 +1,94 @@
+
+
+/* //////////// MIXIN ////////// */
+
+
+/* CSS VER. */
+// .container_mixin {
+//   width:200px;
+//   height:200px;
+//   background-color: orange;
+//   display:flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
+// .container_mixin .item{
+//   display:flex;
+//   justify-content: center;
+//   align-items: center;;
+//  }
+
+//  .box {
+//    display:flex;
+//    justify-content: center;
+//    align-items: center;
+//  }
+
+
+/* SCSS MIXIN !!! */
+// 재활용할 코드를 @mixin의 키워드를 사용한다
+@mixin center {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color:orange;
+  width:200px;
+}
+
+.container_mixin {
+  @include center;
+  .item {
+    @include center;
+  }
+}
+
+
+@mixin box($size:100px, $color: tomato) { // 매개변수를 지정할 수 있다 // 기본값을 (:)콜럼을 사용하여 할당가능
+  width:$size;
+  height: $size;
+  background-color: $color;
+}
+
+.container_mixin {
+  @include box(200px, blue);
+  .item {
+    // @include box(green); // JS처럼, 인수의 위치를 동일하게 지정해줘야한다.
+    @include box(70px);
+    @include box($color: green); // 키워드인수를 사용하여, 인수의 위치에 관계없이, 특정값을 입력할 수 있따.
+  }
+}
+
+
+
+
+@mixin left-top {
+  position:absolute;
+  top:0;
+  left:0;
+  @content; // @content==> 재사용되어서, @inclue된 요소 내에 추가된 값들이다.
+            /*
+            @include left-top {
+              bottom: 0;
+              right: 0;
+              margin: auto;
+            } */
+}
+
+.container_mixIn2 {
+  background-color: green;
+  width: 100px;
+  height: 100px;
+  @include left-top;
+
+}
+
+.box_mixIn2 {
+  width: 200px;
+  height: 300px;
+  @include left-top {
+    bottom: 0;
+    right: 0;
+    margin: auto;
+  }
+}

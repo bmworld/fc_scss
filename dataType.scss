@@ -1,0 +1,39 @@
+
+
+
+
+$number: 1; // ex. .5, 100px, 1em
+$string: bold; // relative, "../image/a.png
+$color: red; // 색상데이터 blue, #ffffff, rgba(0,0,0,0.1)
+$boolean: true; // false
+$null: null; // null
+$list: orange, royalblue, yellow; // 배열
+$map: (
+  o: orange, // key: value
+  r: royalblue, // key: value
+  position:relative, // key: value
+);
+
+
+.box {
+  width:100px;
+  color: red;
+  position: null;
+}
+
+
+@each $c in $list {  // @each 키워드를 통하여, list변수 내에 있는 DATA들을 반복적으로 변수 C에 담는고, {} 사이에서 처리하겠다.
+  .box  {
+    color: $c;
+  }
+}
+
+ 
+
+@each $key, $value in $map {  // map 은 Object이므로 key, value 형태로만들어 사용할 수 있다.
+  .box-#{$key}  {
+    color: $value;
+  }
+}
+
+

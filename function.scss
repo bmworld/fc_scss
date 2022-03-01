@@ -1,0 +1,18 @@
+@mixin center {
+  display:center;
+  justify-content: center;
+  align-items: center;
+}
+
+@function ratio ($size, $ratio) {
+  @return $size * $ratio;
+
+}
+
+.box {
+  $width: 200px;
+  width: $width;
+  // height: ratio($width, 1/2);
+  height: ratio($width, 9 / 16); // Javscript를 쓸필요없이, SCSS에서 함수를 사용해서 CSS에 필요한 값을 조절할 수 있다는게.....겁나게 편한 기능이다..
+  @include center;
+} 
